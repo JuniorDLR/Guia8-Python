@@ -5,37 +5,41 @@
 # programa debe calcular el total vendido por domingo y el acumulado mensual. Utilice bucles
 # anidados para domingos y clientes.
 
-print("")
-print("----- Registro de ventas de nacatamales en eventos dominicales - UAM -----")
-print("")
+def main():
+    print("=" * 20)
+    print("Registro de ventas de nacatamales en eventos de domingo en la UAM")
+    print("=" * 20)
 
-total_mensual = 0
-total_domingo = 0
+eventos = ["torneos", "convivencia", "ferias"]
+cantidaDomingo = 4
+totalMensual = 0
 
-eventos =["Torneos", "Convivencias", "Ferias"]
-eventos1 = [0, 0, 0]
+for evento in eventos:
+    print(f"Nombre evento:  {evento.capitalize()}")
+    totalEvento = 0
 
-for i in range (3):
-        print("El evento del día de hoy es de: ", eventos[i])
+    for domingo in range(1, cantidaDomingo + 1, 1):
+        totalPorDomingo = 0
+
+        print(f"Domingo #{domingo}")
         print("")
 
-        for domingo in range(1,5):
-            print(f"\n--- Domingo #{domingo} ---")
-            print("")
-            print("")
-            clientes = int(input("Ingrese la cantidad de clientes que compraron nacatamales: "))
-            print("")
+        cantidadCliente = int(input("Ingrese la cantidad de cliente: "))
+        for cantidad in range(1, cantidadCliente + 1):
+            cantidadNacatamales = int(
+                input(f"Ingrese la cantidad de nacatamales que compro el cliente {cantidad}: "))
+            
+            totalPorDomingo += cantidadNacatamales
+        print(f"Nacatamales vendidos en el domingo #{domingo}: {totalPorDomingo}")
+        totalEvento += totalPorDomingo
 
-            for cliente in range(1, clientes + 1):
-                
-                cantidad = int(input(f"Ingrese cuántos nacatamales compró el cliente #{cliente}: "))
-                eventos1[i] += cantidad
+    print(f"Nacatamles vendidos en {evento}: {totalEvento}") 
+    totalMensual += totalEvento
 
-total_mensual = sum(eventos1)
+    
 
-print("---Resumen de ventas---")
-print("")
-print(f"Nacatamales vendidos en Torneos: {eventos1[0]}")
-print(f"Nacatamales vendidos en Convivencias: {eventos1[1]}")
-print(f"Nacatamales vendidos en Ferias: {eventos1[2]}")
-print(f"Total general de nacatamales vendidos en los 3 eventos: {total_mensual}")
+totalMensual = sum(totalPorDomingo)
+print(f"Nacatamales vendidos por los 3 eventos: {totalMensual}")
+
+if __name__ == "__main__":
+    main()
