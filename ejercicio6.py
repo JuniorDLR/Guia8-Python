@@ -37,8 +37,6 @@ for evento in eventos:
     totalMensual += totalEvento
 
     
-
-totalMensual = sum(totalPorDomingo)
 print(f"Nacatamales vendidos por los 3 eventos: {totalMensual}")
 
 if __name__ == "__main__":
